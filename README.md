@@ -1,1 +1,1 @@
-# -auth0-adventures
+# auth0-adventures
