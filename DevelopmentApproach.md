@@ -18,4 +18,6 @@
   - [X] Add users endpoint to API: return mock data 
   - [X] Change users endpoint to be protected(Authorized) 
 - [X] Change SPA app to call users API using access_token 
-- [ ] Change API to call Auth0 users API to retrieve users data  
+- [ ] Change API code to match requirements 
+  - [ ] Call Auth0 users API to retrieve users data  
+  - [ ] Apply search filtering on API 
