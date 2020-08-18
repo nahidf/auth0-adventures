@@ -10,6 +10,9 @@ src
 └── Models : Shared library 
 ```
 
+### Auth0 Tenant 
+
+To run this application, create a `tenant` on Auth0 dashboard. Also need to create some users via `users` link on the Auth0 dashboard. We can login using any of added users and also view list of users on the client app.
 
 ### Client 
 
