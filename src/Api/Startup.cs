@@ -1,9 +1,11 @@
+using Api.Services.Abstractions;
+using Api.Services.Auth0;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace Api
 {
@@ -21,11 +23,20 @@ namespace Api
         {
             services.AddControllers();
 
+            services.AddHttpClient<IUserService, UserService>(c =>
+            {
+                c.BaseAddress = new Uri(Configuration["Auth0:Authority"]);
+            });
+            services.AddHttpClient<TokenService>(c =>
+            {
+                c.BaseAddress = new Uri(Configuration["Auth0:Authority"]);
+            });
+
             services.AddAuthentication("Bearer").AddJwtBearer(options =>
             {
-                options.Authority = "https://dev-fh3a8ca8.us.auth0.com/";
-                options.Audience = "https://localhost:7006";
-
+                Configuration.Bind("Auth0", options);
+                
+                //uncomment to disable audience validation 
                 //options.TokenValidationParameters = new TokenValidationParameters()
                 //{
                 //    ValidateAudience = false,
@@ -34,10 +45,9 @@ namespace Api
 
             services.AddCors(options =>
             {
-                // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("https://localhost:6006")
+                    policy.WithOrigins(Configuration["Client:Origin"])
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });

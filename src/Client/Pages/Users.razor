@@ -1,14 +1,10 @@
 ﻿@page "/users"
 @attribute [Authorize]
 
-@using System.Net.Http.Headers;
-@using System.Net.Http.Json;
 @using Microsoft.AspNetCore.Authorization;
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 @using Client.Services;
 
-@inject UserService UserService
-@inject IAccessTokenProvider TokenProvider
+@inject ApiService Service
 
 <h1>Users</h1>
 
@@ -22,18 +18,22 @@ else
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Nickname</th>
                 <th>Email</th>
-                <th>Latest Login</th>
+                <th>Picture</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in users)
             {
-                <tr>
-                    <td>@user.Name</td>
-                    <td>@user.Email</td>
-                    <td>@user.LatestLogin.ToShortDateString()</td>
-                </tr>
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.NickName</td>
+                <td>@user.Email</td>
+                <td>
+                    <img src="@(user.Picture)"/>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
@@ -44,11 +44,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var tokenResult = await TokenProvider.RequestAccessToken();
-
-        if (tokenResult.TryGetToken(out var token))
-        {
-            users = await UserService.GetUsersAsync(token.Value);
-        }
+        users = await Service.GetUsersAsync();
     }
 }

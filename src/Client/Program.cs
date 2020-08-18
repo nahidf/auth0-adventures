@@ -1,10 +1,11 @@
+using Client.Infrastructure;
 using Client.Services;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using Client.Infrastructure;
 
 namespace Client
 {
@@ -16,18 +17,17 @@ namespace Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped<CustomAuthorizationMessageHandler>();
-            builder.Services.AddHttpClient<UserService>(client =>
+            builder.Services.AddHttpClient<ApiService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:7006");
+                client.BaseAddress = new Uri(builder.Configuration["Api:BaseAddress"]);
             })
                 .AddHttpMessageHandler<CustomAuthorizationMessageHandler>();
 
-            builder.Services.AddOidcAuthentication(options =>
+            builder.Services.AddAuth0Authentication(options =>
             {
-                // Configure your authentication provider options here.
-                // For more information, see https://aka.ms/blazor-standalone-auth
-                options.ProviderOptions.Authority = "https://dev-fh3a8ca8.us.auth0.com";
-                options.ProviderOptions.ClientId = "ldlHCnD8HmQSqip79Kn92QFNXT77Ixzl";
+                builder.Configuration.Bind("Auth0", options.ProviderOptions);
+
+                //This is set here to avoid any change via config
                 options.ProviderOptions.ResponseType = "code";
             });
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Api.Services.Abstractions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,38 +14,33 @@ namespace Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
+        private readonly IUserService _userService;
 
-        public UserController(ILogger<UserController> logger)
+        public UserController(ILogger<UserController> logger, IUserService userService)
         {
             _logger = logger;
+            _userService = userService;
         }
 
         [HttpGet]
         [Authorize]
-        public async Task<IEnumerable<UserModel>> Get()
+        public Task<IEnumerable<UserModel>> GetAsync([FromQuery] Dictionary<string, string> filter)
         {
-            return new List<UserModel>
-            {
-                new UserModel()
-                {
-                    Name = "Nahid"
-                },
-                new UserModel()
-                {
-                    Name = "Dora"
-                },
-                new UserModel()
-                {
-                    Name = "Foo"
-                }
-            };
+            return _userService.GetUsersAsync(filter);
         }
+
+        //[HttpGet]
+        //[Route("verify")]
+        //public string Verify()
+        //{
+        //    return "API is up!";
+        //}
 
         [HttpGet]
         [Route("verify")]
-        public string Verify()
+        public Task<IEnumerable<UserModel>> TestApi([FromQuery] Dictionary<string, string> filter)
         {
-            return "API is up!";
+            return _userService.GetUsersAsync(filter);
         }
     }
 }

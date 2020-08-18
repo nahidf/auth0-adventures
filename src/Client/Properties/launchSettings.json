@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WasmAppAuth": {
+    "Client": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
