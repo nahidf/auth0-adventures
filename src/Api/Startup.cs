@@ -1,5 +1,6 @@
 using Api.Services.Abstractions;
 using Api.Services.Auth0;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddHttpClient<IUserService, UserService>(c =>
             {

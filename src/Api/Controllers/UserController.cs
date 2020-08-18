@@ -29,18 +29,11 @@ namespace Api.Controllers
             return _userService.GetUsersAsync(filter);
         }
 
-        //[HttpGet]
-        //[Route("verify")]
-        //public string Verify()
-        //{
-        //    return "API is up!";
-        //}
-
         [HttpGet]
         [Route("verify")]
-        public Task<IEnumerable<UserModel>> TestApi([FromQuery] Dictionary<string, string> filter)
+        public string Verify()
         {
-            return _userService.GetUsersAsync(filter);
+            return "API is up!";
         }
     }
 }

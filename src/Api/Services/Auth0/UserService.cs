@@ -1,4 +1,5 @@
 ﻿using Api.Services.Abstractions;
+using AutoMapper;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -18,13 +19,17 @@ namespace Api.Services.Auth0
         private readonly IConfiguration _config;
         private readonly ILogger<UserService> _logger;
         private readonly TokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public UserService(HttpClient httpClient, IConfiguration config, ILogger<UserService> logger, TokenService tokenService)
+        public UserService(HttpClient httpClient, IConfiguration config, ILogger<UserService> logger, TokenService tokenService,
+            IMapper mapper)
         {
             _httpClient = httpClient;
             _config = config;
             _logger = logger;
             _tokenService = tokenService;
+            _mapper = mapper;
+
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
@@ -53,35 +58,13 @@ namespace Api.Services.Auth0
             if (response.IsSuccessStatusCode)
             {
                 var users = JsonConvert.DeserializeObject<IEnumerable<User>>(jsonContent);
-
-                return GetUserModels(users);
+                return _mapper.Map<List<UserModel>>(users);
             }
 
             var error = $"error on get users from Auth0, http-response: {jsonContent}";
             _logger.LogError(error);
 
             return null;
-        }
-
-
-        private IEnumerable<UserModel> GetUserModels(IEnumerable<User> users)
-        {
-            if (users == null)
-                return null;
-
-            var result = new List<UserModel>();
-            foreach (var user in users)
-            {
-                result.Add(new UserModel()
-                {
-                    Email = user.Email,
-                    Name = user.Name,
-                    NickName= user.NickName,
-                    Picture = user.Picture,
-                });
-            }
-
-            return result;
         }
     }
 }
