@@ -22,11 +22,11 @@ Client is a ASP.NET Core Blazor WASM app, which contains following features
 
 To setup the ASP.NET Core Blazor WASM app, open `appsettings.json` on wwwroot folder of client(`src\Client\wwwroot\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
 
-1. `Auth0`: These values are required to authenticate via Auth0 using OpenId Connect, and to recieve access_token to call the custom API.
+**`Auth0`**: These values are required to authenticate via Auth0 using OpenId Connect, and to recieve access_token to call the custom API.
 
-- Authority: Set this with tenant domain value. 
-- Audience: Set this to the API key.
-- ClientId: Set this to the ClientId for the SPA app 
+- `Authority`: Set this with tenant domain value. 
+- `Audience`: Set this to the API key.
+- `ClientId`: Set this to the ClientId for the SPA app 
 
 ```
 {
@@ -38,7 +38,7 @@ To setup the ASP.NET Core Blazor WASM app, open `appsettings.json` on wwwroot fo
 }
 ```
 
-2. `Api`: These are values required to call the Custom API.
+**`Api`**: These are values required to call the Custom API.
 
 - BaseAddress: Set this to the API base address.
 
@@ -63,7 +63,7 @@ API is a ASP.NET Core API, which contains following features
 
 To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
 
-1. `Auth0`: These values are required to authorize via Auth0 using OAuth2, and to recieve access_token to call the API Management.
+**`Auth0`**: These values are required to authorize via Auth0 using OAuth2, and to recieve access_token to call the API Management.
 
 ```
 "Auth0": {
@@ -74,7 +74,7 @@ To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api
   },
 ```
 
-2. `Client`: Values required for client call to the API.
+**`Client`**: Values required for client call to the API.
 
 ```
  "Client": {

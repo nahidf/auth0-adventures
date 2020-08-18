@@ -1,6 +1,5 @@
 
-# Development approach for .NET Excercise 
-
+# Development approach for .NET Exercise 
 
 - [X] Create GitHub repo for project
 - [X] Signup on Auth0 
@@ -18,6 +17,7 @@
   - [X] Add users endpoint to API: return mock data 
   - [X] Change users endpoint to be protected(Authorized) 
 - [X] Change SPA app to call users API using access_token 
-- [ ] Change API code to match requirements 
-  - [ ] Call Auth0 users API to retrieve users data  
-  - [ ] Apply search filtering on API 
+- [X] Change API code to match requirements 
+  - [X] Call Auth0 token endpoint to get client auth token 
+  - [X] Call Auth0 users API to retrieve users data using client auth token   
+  - [X] Apply search filtering on API 
