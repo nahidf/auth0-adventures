@@ -1,5 +1,5 @@
 
-# Development approach for .NET Excercise 
+# Development approach for .NET Exercise 
 
 - [X] Create GitHub repo for project
 - [X] Signup on Auth0 
