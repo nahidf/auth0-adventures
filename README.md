@@ -57,9 +57,7 @@ To run the solution using your own settings on Auth0 and also local development 
 To setup this application, you need to create a `tenant` on Auth0 dashboard. The `Domain`(unique identifier) of this tenant is what we will refrence later in this document as `Authority` 
 Also to try out the login, create some users via `users` link on the Auth0 dashboard. You login using any of users using email/password. List of users will be shown on client app.
 
-### Client 
-
-##### Auth0 dashboard:
+### Client - Auth0 dashboard:
 
 To setup the client on auth0 dashboard please follow these steps: 
 
@@ -80,15 +78,15 @@ To setup the client on auth0 dashboard please follow these steps:
 
 <img width="400" alt="Screen Shot 2020-08-18 at 2 40 44 PM" src="https://user-images.githubusercontent.com/4095071/90553770-ea2bb900-e162-11ea-87e4-e58eab1f62ff.png">
 
-##### Code: 
+##### Client - Code: 
 
 To setup the ASP.NET Core Blazor WASM app, open `appsettings.json` on wwwroot folder of client(`src\Client\wwwroot\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
 
 **`Auth0`**: These values are required to authenticate via Auth0 using OpenId Connect, and to recieve access_token to call the custom API.
 
-- `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard]().
-- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard]().
-- `ClientId`: Set this to the ClientId for the SPA app. This value is defined on [Client - Auth0 dashboard]().
+- `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard](#auth0-tenant---auth0-dashboard).
+- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `ClientId`: Set this to the ClientId for the SPA app. This value is defined on [Client - Auth0 dashboard](#client---auth0-dashboard).
 
 Here is example values set: 
 
@@ -104,7 +102,7 @@ Here is example values set:
 
 **`Api`**: These are values required to call the Custom API.
 
-- BaseAddress: Set this to the API base address. This value is defined on [API - Code]().
+- BaseAddress: Set this to the API base address. This value is defined on [API - Code]((#api---code)).
 
 ```
 {
@@ -114,9 +112,7 @@ Here is example values set:
 }
 ```
 
-### API 
-
-##### Auth0 dashboard:
+### API - Auth0 dashboard:
 
 To setup the API on auth0 dashboard please follow these steps: 
 
@@ -136,10 +132,10 @@ To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api
 
 **`Auth0`**: These values are required to authorize via Auth0 using OAuth2, and to recieve access_token to call the API Management.
 
-- `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard]().
-- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard]().
-- `ClientId`: Set this to the ClientId for the API app. This value is defined on [API - Auth0 dashboard]().
-- `ClientId`: Set this to the ClientSecret for the API app. This value is defined on [API - Auth0 dashboard]().
+- `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard](#auth0-tenant---auth0-dashboard).
+- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
+- `ClientId`: Set this to the ClientId for the API app. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
+- `ClientId`: Set this to the ClientSecret for the API app. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
 
 ```
 "Auth0": {
@@ -152,7 +148,7 @@ To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api
 
 **`Client`**: Values required for client call to the API.
 
-`Origin`: Set this to the Client app URL. This value defined on [Client - Code]().
+`Origin`: Set this to the Client app URL. This value defined on [Client - Code]((#client---code)).
 
 ```
  "Client": {
