@@ -102,7 +102,7 @@ Here is example values set:
 
 **`Api`**: These are values required to call the Custom API.
 
-- BaseAddress: Set this to the API base address. This value is defined on [API - Code]((#api---code)).
+- BaseAddress: Set this to the API base address. This value is defined on [API - Code](#api---code).
 
 ```
 {
@@ -133,9 +133,9 @@ To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api
 **`Auth0`**: These values are required to authorize via Auth0 using OAuth2, and to recieve access_token to call the API Management.
 
 - `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard](#auth0-tenant---auth0-dashboard).
-- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
-- `ClientId`: Set this to the ClientId for the API app. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
-- `ClientId`: Set this to the ClientSecret for the API app. This value is defined on [API - Auth0 dashboard]((#api---auth0-dashboard)).
+- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `ClientId`: Set this to the ClientId for the API app. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `ClientId`: Set this to the ClientSecret for the API app. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
 
 ```
 "Auth0": {
@@ -148,7 +148,7 @@ To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api
 
 **`Client`**: Values required for client call to the API.
 
-`Origin`: Set this to the Client app URL. This value defined on [Client - Code]((#client---code)).
+`Origin`: Set this to the Client app URL. This value defined on [Client - Code](#client---code).
 
 ```
  "Client": {
