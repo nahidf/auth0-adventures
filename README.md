@@ -12,12 +12,12 @@ src
 └── Models : Shared library 
 ```
 
-**Client** is a ASP.NET Core Blazor WASM app, which contains following features 
+**Client** is a ASP.NET Core Blazor WASM app, which contains following features:
 
-- Prompts the user to log-in to Auth0
+- Prompts user to log-in to Auth0
 - Calls the ASP.NET Core web application to get the list of users
 
-**API** is a ASP.NET Core API, which contains following features 
+**API** is a ASP.NET Core API, which contains following features:
 
 - Ensures the request being made is authorized
 - Takes a parameter specifying a search term
