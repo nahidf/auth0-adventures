@@ -78,7 +78,7 @@ To setup the client on auth0 dashboard please follow these steps:
 
 <img width="400" alt="Screen Shot 2020-08-18 at 2 40 44 PM" src="https://user-images.githubusercontent.com/4095071/90553770-ea2bb900-e162-11ea-87e4-e58eab1f62ff.png">
 
-##### Client - Code: 
+### Client - Code: 
 
 To setup the ASP.NET Core Blazor WASM app, open `appsettings.json` on wwwroot folder of client(`src\Client\wwwroot\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
 
@@ -126,7 +126,7 @@ To setup the API on auth0 dashboard please follow these steps:
 
 <img width="400" alt="Screen Shot 2020-08-18 at 3 00 40 PM" src="https://user-images.githubusercontent.com/4095071/90554326-b00ee700-e163-11ea-8e9d-0ab6c57e785c.png">
 
-##### Code: 
+### API - Code: 
 
 To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
 
