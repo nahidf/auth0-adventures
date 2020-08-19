@@ -54,7 +54,7 @@ To run the solution using your own settings on Auth0 and also local development 
 
 ### Auth0 Tenant - Auth0 dashboard
 
-To setup this application, you need to create a `tenant` on Auth0 dashboard. The `Domain`(unique identifier) of this tenant is what we will refrence later in this document as `Authority` 
+To setup this application, you need to create a `tenant` on Auth0 dashboard. The `Domain`(unique identifier) of this tenant is what we will reference later in this document as `Authority` 
 Also to try out the login, create some users via `users` link on the Auth0 dashboard. You login using any of users using email/password. List of users will be shown on client app.
 
 ### Client - Auth0 dashboard:
@@ -63,7 +63,7 @@ To setup the client on auth0 dashboard please follow these steps:
 
 - Go to `Applications` link 
 - Create a `SINGLE PAGE APPLICATION`
-- Decide about a URL for client app. This is the URL you will use to run the client app localy. It can be a URL like `https://localhost:6006`
+- Decide about a URL for client app. This is the URL you will use to run the client app locally. It can be a URL like `https://localhost:6006`
 - Set `Allowed Callback URLs`
 
 ```
@@ -80,9 +80,13 @@ To setup the client on auth0 dashboard please follow these steps:
 
 ### Client - Code: 
 
-To setup the ASP.NET Core Blazor WASM app, open `appsettings.json` on wwwroot folder of client(`src\Client\wwwroot\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
+To setup the ASP.NET Core Blazor WASM app: 
 
-**`Auth0`**: These values are required to authenticate via Auth0 using OpenId Connect, and to recieve access_token to call the custom API.
+1. **URL**: Open `launchSettings.json` on properties folder of client(`src\Client\Properties\launchSettings.json`) and adjust the application urls to match what you set on [Client - Auth0 dashboard](#client---auth0-dashboard) for client url.
+
+2. **Configuration**: Open `appsettings.json` on wwwroot folder of client(`src\Client\wwwroot\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
+
+**`Auth0`**: These values are required to authenticate via Auth0 using OpenId Connect, and to receive access_token to call the custom API.
 
 - `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard](#auth0-tenant---auth0-dashboard).
 - `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
@@ -118,7 +122,8 @@ To setup the API on auth0 dashboard please follow these steps:
 
 - Go to `APIs` link 
 - Create an `API`
-- Set `Identifier`, this value is what we use as `audience` on client application.  
+- Decide about a URL for API. This is the URL you will use to run the API locally. It can be a URL like `https://localhost:7006`
+- Set `Identifier` to the URL decided. This value is what we use as `audience` on client application.  
 
 <img width="400" alt="Screen Shot 2020-08-18 at 2 58 32 PM" src="https://user-images.githubusercontent.com/4095071/90554102-64f4d400-e163-11ea-8405-7e9d4c9728b6.png">
 
@@ -126,16 +131,27 @@ To setup the API on auth0 dashboard please follow these steps:
 
 <img width="400" alt="Screen Shot 2020-08-18 at 3 00 40 PM" src="https://user-images.githubusercontent.com/4095071/90554326-b00ee700-e163-11ea-8e9d-0ab6c57e785c.png">
 
+- Go to `Applications` link 
+- Select the api application you created in last steps
+- Copy Client ID and secret. These values will be used later on API code 
+
+<img width="400" alt="Screen Shot 2020-08-19 at 10 42 30 AM" src="https://user-images.githubusercontent.com/4095071/90649483-c91da380-e208-11ea-9f7a-f737f1935f58.png">
+
+
 ### API - Code: 
 
-To setup the ASP.NET API, open `appsettings.json` on root folder of api(`src\api\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
+To setup the ASP.NET API: 
 
-**`Auth0`**: These values are required to authorize via Auth0 using OAuth2, and to recieve access_token to call the API Management.
+1. **URL**: Open `launchSettings.json` on properties folder of api(`src\API\Properties\launchSettings.json`) and adjust the application urls to match what you set on [API - Auth0 dashboard](#api---auth0-dashboard) for API's identifier(URL).
+
+2. **Configuration**: Open `appsettings.json` on root folder of api(`src\api\appsettings.json`) and adjust config values. There is two sets of values to adjust: 
+
+**`Auth0`**: These values are required to authorize via Auth0 using OAuth2, and to receive access_token to call the API Management.
 
 - `Authority`: Set this with tenant's domain value. This value defined on [Auth0 Tenant - Auth0 dashboard](#auth0-tenant---auth0-dashboard).
-- `Audience`: Set this to the API key. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
-- `ClientId`: Set this to the ClientId for the API app. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
-- `ClientId`: Set this to the ClientSecret for the API app. This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `Audience`: Set this to the API identifier(URL). This value is defined on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `ClientId`: Set this to the ClientId for the API app. This value is captured on [API - Auth0 dashboard](#api---auth0-dashboard).
+- `ClientSecret`: Set this to the ClientSecret for the API app. This value is captured on [API - Auth0 dashboard](#api---auth0-dashboard).
 
 ```
 "Auth0": {
