@@ -14,6 +14,27 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
+.profile-img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.users-table, th, td {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.users-table td {
+    vertical-align: middle;
+}
+
 app {
     position: relative;
     display: flex;
