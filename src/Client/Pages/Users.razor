@@ -1,0 +1,49 @@
+﻿@page "/users"
+@attribute [Authorize]
+
+@using Microsoft.AspNetCore.Authorization;
+@using Client.Services;
+
+@inject ApiService Service
+
+<h1>Users</h1>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table users-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Nickname</th>
+                <th>Email</th>
+                <th>Picture</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+            <tr>
+                <td>@user.Name</td>
+                <td>@user.NickName</td>
+                <td>@user.Email</td>
+                <td>
+                    <img src="@(user.Picture)" class="profile-img"/>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<UserModel> users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await Service.GetUsersAsync();
+    }
+}
