@@ -98,7 +98,7 @@ To setup the API on auth0 dashboard please follow these steps:
 - Decide about a URL for API. This is the URL you will use to run the API locally. It can be a URL like `https://localhost:7006`
 - Set `Identifier` to the URL decided. This value is what we use as `audience` on client application.  
 
-<img width="400" alt="Screen Shot 2020-08-18 at 2 58 32 PM" src="https://user-images.githubusercontent.com/4095071/90554102-64f4d400-e163-11ea-8405-7e9d4c9728b6.png">
+<img width="400" alt="Screen Shot 2020-08-18 at 2 58 32 PM" src="https://user-images.githubusercontent.com/4095071/91125583-1322e100-e670-11ea-861c-6da2561d2ac2.png">
 
 - Go to `Machine to Machine Applications` and change `API Explorer Application` to be `Authorized` 
 
@@ -108,7 +108,7 @@ To setup the API on auth0 dashboard please follow these steps:
 - Select the api application you created in last steps
 - Copy Client ID and secret. These values will be used later on API code 
 
-<img width="400" alt="Screen Shot 2020-08-19 at 10 42 30 AM" src="https://user-images.githubusercontent.com/4095071/90649483-c91da380-e208-11ea-9f7a-f737f1935f58.png">
+<img width="400" alt="Screen Shot 2020-08-19 at 10 42 30 AM" src="https://user-images.githubusercontent.com/4095071/91125723-6301a800-e670-11ea-8faa-d3cf61ff9e8b.png">
 
 
 ### API - Code: 
