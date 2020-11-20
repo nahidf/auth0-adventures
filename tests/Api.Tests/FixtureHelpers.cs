@@ -9,7 +9,7 @@ namespace Api.Tests
     {
         public static Task<string> GetFixtureContentsAsync(this string fileName)
         {
-            var uri = new UriBuilder(Assembly.GetExecutingAssembly().CodeBase);
+            var uri = new UriBuilder(Assembly.GetExecutingAssembly().Location);
             var sourcePath = Path.GetDirectoryName(Uri.UnescapeDataString(uri.Path));
 
             var filePath = Path.Combine(sourcePath, "sample-data", fileName);
