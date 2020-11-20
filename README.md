@@ -1,6 +1,8 @@
 # auth0-adventures
 
-This solution is to demonstrate Authentication using OpenId Connect and Authorization using OAuth 2.0 against Auth0. It contains calls to Auth0 API management to retrieve some data.
+This solution is to demonstrate Authentication using OpenID Connect and Authorization using OAuth 2.0 against Auth0. 
+It contains calls to Auth0 API management to retrieve some data.
+This solution is using **.NET 5**.
 
 The exercise structure is: 
 
