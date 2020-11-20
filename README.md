@@ -6,7 +6,7 @@ The exercise structure is:
 
 ```
 src
-│   Exercise.sln
+│   Blazor-Auth0.sln
 ├── Client : ASP.NET Core Blazor WASM app
 ├── API : ASP.NET Core API
 └── Models : Shared library 
