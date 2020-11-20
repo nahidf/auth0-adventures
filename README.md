@@ -1,6 +1,6 @@
 # auth0-adventures
 
-This solution is an exercise to demonstrate Authentication using OpenId Connect and Authorization using OAuth 2.0 against Auth0. It contains calls to Auth0 API management to retrieve some data.
+This solution is to demonstrate Authentication using OpenId Connect and Authorization using OAuth 2.0 against Auth0. It contains calls to Auth0 API management to retrieve some data.
 
 The exercise structure is: 
 
@@ -14,41 +14,14 @@ src
 
 **Client** is a ASP.NET Core Blazor WASM app, which contains following features:
 
-- Prompts user to log-in to Auth0
-- Calls the ASP.NET Core web application to get the list of users
+- Login using OpenId Connect against Auth0 
 
 **API** is a ASP.NET Core API, which contains following features:
 
-- Ensures the request being made is authorized
-- Takes a parameter specifying a search term
-- Remotely queries the Auth0 Management API to search users for this term
-- Returns that a list of users for the tenant as a JSON response
+- Endpoint authorization using OAuth 2.0
+- Remotely queries the Auth0 Management API 
 
-## Run the solution locally using default settings 
-
-**Local Https**: To run the project locally using the default configuration in the repo, you need setup to use local Https with ASP.NET Core.  
-
-1. Install ASP.NET Core self signed certificate for development on your machine 
-
-```
-dotnet dev-certs https --trust
-```
-2. Copy the generated certificate's thumbprint
-
-3. Setup SSL URL for `Client` and `API` project by running following two commands. 
-
-```
-"C:\Program Files (x86)\IIS Express\IisExpressAdminCmd.exe" setupSslUrl -url:https://localhost:6006 -CertHash:<Certificate thumbprint>
-``` 
-```
-"C:\Program Files (x86)\IIS Express\IisExpressAdminCmd.exe" setupSslUrl -url:https://localhost:7006 -CertHash:<Certificate thumbprint>
-```
-
-If you have any trouble on this please checkout [Local Https with ASP.NET Core](#local-https-with-aspnet-core) section on this page.
-
-**User Login**: After running the project you can login using `nahid@test.com`/`Test@123` or any other user listed in the client using their email/`Test@123`.
-
-## Run the solution locally using your own settings 
+## Run the solution locally
 
 To run the solution using your own settings on Auth0 and also local development env, you need to setup the `Auth0 Tenant`, `Client` and `API`.
 
@@ -97,9 +70,9 @@ Here is example values set:
 ```
 {
   "Auth0": {
-    "Authority": "https://dev-fh3a8ca8.us.auth0.com",
+    "Authority": "https://dev-test.us.auth0.com",
     "Audience": "https://localhost:7006",
-    "ClientId": "ldlHCnD8HmQSqip79Kn92QFNXT77Ixzl"
+    "ClientId": "{client-id}"
   }
 }
 ```
@@ -125,7 +98,7 @@ To setup the API on auth0 dashboard please follow these steps:
 - Decide about a URL for API. This is the URL you will use to run the API locally. It can be a URL like `https://localhost:7006`
 - Set `Identifier` to the URL decided. This value is what we use as `audience` on client application.  
 
-<img width="400" alt="Screen Shot 2020-08-18 at 2 58 32 PM" src="https://user-images.githubusercontent.com/4095071/90554102-64f4d400-e163-11ea-8405-7e9d4c9728b6.png">
+<img width="400" alt="Screen Shot 2020-08-18 at 2 58 32 PM" src="https://user-images.githubusercontent.com/4095071/91125583-1322e100-e670-11ea-861c-6da2561d2ac2.png">
 
 - Go to `Machine to Machine Applications` and change `API Explorer Application` to be `Authorized` 
 
@@ -135,7 +108,7 @@ To setup the API on auth0 dashboard please follow these steps:
 - Select the api application you created in last steps
 - Copy Client ID and secret. These values will be used later on API code 
 
-<img width="400" alt="Screen Shot 2020-08-19 at 10 42 30 AM" src="https://user-images.githubusercontent.com/4095071/90649483-c91da380-e208-11ea-9f7a-f737f1935f58.png">
+<img width="400" alt="Screen Shot 2020-08-19 at 10 42 30 AM" src="https://user-images.githubusercontent.com/4095071/91125723-6301a800-e670-11ea-8faa-d3cf61ff9e8b.png">
 
 
 ### API - Code: 
@@ -155,10 +128,10 @@ To setup the ASP.NET API:
 
 ```
 "Auth0": {
-    "Authority": "https://dev-fh3a8ca8.us.auth0.com",
+    "Authority": "https://dev-test.us.auth0.com",
     "Audience": "https://localhost:7006",
-    "ClientId": "N3Inh5trdEImWTKnPVeks4Fl0dvPl5QE",
-    "ClientSecret": "35zmrp5nqmX-lH0mWYQ3iGOJMT8nSSqTEmHkqPEyQLFDKwX2b8tMEsWchk4dgwsL"
+    "ClientId": "{client-id}",
+    "ClientSecret": "{client-secret}"
   },
 ```
 
